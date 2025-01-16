@@ -264,7 +264,7 @@ function DashboardLayoutBasic({ language, setLanguage, ...props }) {
     sx={{ position: "absolute", left: language === "EN" ? 45 : 9 }}
     title={language == "EN" ? "Translate to arabic" : "ترجم إلى الإنجليزية"}
   >
-    <MdGTranslate style={{ fontSize: "30px", color: "#007bff" }} />
+    <MdGTranslate style={{ fontSize: "30px", color: "#1488bc" }} />
   </IconButton>
 
   <IconButton
