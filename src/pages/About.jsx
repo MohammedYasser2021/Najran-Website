@@ -158,7 +158,6 @@ const [alertSuccess, setAlertSuccess] = useState(true);
 
   return (
     <Box sx={{ 
-      background: 'linear-gradient(to bottom, #f8f9fa, #ffffff)',
       minHeight: '100vh',
       direction: language === "AR" ? 'rtl' : 'ltr'
     }}>

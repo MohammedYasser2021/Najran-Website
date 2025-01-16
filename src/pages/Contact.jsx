@@ -92,9 +92,10 @@ function Contact({ language }) {
   return (
     <Box sx={{
       py: 4,
-      px: { xs: 1, sm: 4 },
+      px: { xs: 0, sm: 4 },
       direction: language === "AR" ? 'rtl' : 'ltr',
       overflowX: 'hidden'
+     
     }}>
       <Box sx={{
         display: 'flex',
@@ -115,7 +116,7 @@ function Contact({ language }) {
         </Box>
       </Box>
 
-      <Container maxWidth="lg" sx={{ px: { xs: 1, sm: 2 } }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 0, sm: 2 } }}>
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <Typography variant="h2" sx={{
             color: '#1a237e',
@@ -142,7 +143,11 @@ function Contact({ language }) {
           </Box>
         </Box>
 
-        <Grid container spacing={6}>
+        <Grid container spacing={{ 
+  xs: 2, // Reduce spacing on mobile
+  sm: 4,
+  md: 6 
+}}>
           <Grid item xs={12} md={6}>
             <Box component="form" onSubmit={handleSubmit}>
               <TextField
