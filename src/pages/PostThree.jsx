@@ -11,7 +11,9 @@ function ObesitySurgery({ language }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-
+  const [openAlert, setOpenAlert] = useState(false);
+const [alertMessage, setAlertMessage] = useState("");
+const [alertSuccess, setAlertSuccess] = useState(true);
   const content = {
     AR: {
       title: "جراحات السمنة",
@@ -106,7 +108,9 @@ Traditional and smart capsule procedures
         'eGZ4YSe0tvpqV-HZ5'
       )
       .then(() => {
-        alert(language === "AR" ? "تم إرسال بياناتك بنجاح!" : "Your information has been sent successfully!");
+        setAlertSuccess(true);
+        setAlertMessage(language === "AR" ? "تم إرسال بياناتك بنجاح!" : "Your information has been sent successfully!");
+        setOpenAlert(true);
         setOpenDialog(false);
         setName("");
         setPhone("");
@@ -114,10 +118,14 @@ Traditional and smart capsule procedures
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert(language === "AR" ? "حدث خطأ في إرسال البيانات" : "Error submitting data");
+        setAlertSuccess(false);
+        setAlertMessage(language === "AR" ? "حدث خطأ في إرسال البيانات" : "Error submitting data");
+        setOpenAlert(true);
       });
     } else {
-      alert(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please enter all information.");
+      setAlertSuccess(false);
+      setAlertMessage(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please enter all information.");
+      setOpenAlert(true);
     }
   };
 
@@ -125,20 +133,23 @@ Traditional and smart capsule procedures
     <Box sx={{ py: 4, px: 4 }}>
       {/* Header */}
       <Box sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        mb: 6,
-        flexWrap: 'wrap',
-        gap: 2
-      }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
-          <img src={logo} alt="Logo" style={{ maxWidth: "200px", height: "auto" }} />
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
-          <img src={testimonialImage} alt="testimonialImage" style={{ maxWidth: "200px", height: "auto" }} />
-        </Box>
-      </Box>
+  display: 'flex',
+  justifyContent: { xs: 'center', sm: 'space-between' },
+  alignItems: 'center',
+  mb: 6,
+  flexWrap: 'wrap',
+  gap: 2,
+  '@media (max-width: 530px)': {
+    justifyContent: 'center'
+  }
+}}>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
+    <img src={logo} alt="Logo" style={{ maxWidth: "200px", height: "auto" }} />
+  </Box>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
+    <img src={testimonialImage} alt="testimonialImage" style={{ maxWidth: "200px", height: "auto" }} />
+  </Box>
+</Box>
 
       {/* Content */}
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
@@ -324,6 +335,54 @@ Traditional and smart capsule procedures
               <FaPhoneAlt style={{ marginRight: language === "AR" ? '8px' : '0', marginLeft: language === "AR" ? '0' : '8px' }} />
             </Button>
           </Box>
+        </DialogContent>
+      </Dialog>
+            <Dialog
+        open={openAlert}
+        onClose={() => setOpenAlert(false)}
+        PaperProps={{
+          sx: {
+            borderRadius: '20px',
+            background: 'white',
+            minWidth: '300px',
+            maxWidth: '90%',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+            border: `2px solid ${alertSuccess ? '#4CAF50' : '#f44336'}`
+          }
+        }}
+      >
+        <DialogTitle sx={{ 
+          color: alertSuccess ? '#4CAF50' : '#f44336', 
+          textAlign: 'center',
+          pt: 3,
+          pb: 2,
+          fontSize: '1.5rem',
+          fontWeight: 600
+        }}>
+          {alertSuccess ? 
+            (language === "AR" ? "تم بنجاح!" : "Success!") : 
+            (language === "AR" ? "تنبيه!" : "Alert!")}
+          <IconButton
+            onClick={() => setOpenAlert(false)}
+            sx={{
+              position: 'absolute',
+              right: language === "AR" ? 'auto' : 8,
+              left: language === "AR" ? 8 : 'auto',
+              top: 8,
+              color: alertSuccess ? '#4CAF50' : '#f44336'
+            }}
+          >
+            <FaTimes />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent sx={{ 
+          color: '#666',
+          textAlign: 'center',
+          pb: 3
+        }}>
+          <Typography sx={{ fontSize: '1.1rem' }}>
+            {alertMessage}
+          </Typography>
         </DialogContent>
       </Dialog>
     </Box>

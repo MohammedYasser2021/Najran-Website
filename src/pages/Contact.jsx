@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button, TextField, Container, Grid, Link } from '@mui/material';
-import { FaPhoneAlt, FaEnvelope, FaGlobe, FaMapMarkerAlt } from "react-icons/fa";
+import { Box, Typography, Button, TextField, Container, Grid, Link, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
+import { FaPhoneAlt, FaEnvelope, FaGlobe, FaMapMarkerAlt, FaTimes } from "react-icons/fa";
 import logo from "../assets/nagran.png";
 import testimonialImage from "../assets/image1.png";
 import heroImage from "../assets/hospital.jpg";
@@ -11,6 +11,9 @@ function Contact({ language }) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [openAlert, setOpenAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSuccess, setAlertSuccess] = useState(true);
 
   const content = {
     AR: {
@@ -65,7 +68,9 @@ function Contact({ language }) {
         'eGZ4YSe0tvpqV-HZ5'
       )
       .then(() => {
-        alert(language === "AR" ? "تم إرسال رسالتك بنجاح!" : "Your message has been sent successfully!");
+        setAlertSuccess(true);
+        setAlertMessage(language === "AR" ? "تم إرسال رسالتك بنجاح!" : "Your message has been sent successfully!");
+        setOpenAlert(true);
         setName("");
         setPhone("");
         setEmail("");
@@ -73,23 +78,34 @@ function Contact({ language }) {
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert(language === "AR" ? "حدث خطأ في إرسال الرسالة" : "Error sending message");
+        setAlertSuccess(false);
+        setAlertMessage(language === "AR" ? "حدث خطأ في إرسال الرسالة" : "Error sending message");
+        setOpenAlert(true);
       });
     } else {
-      alert(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please fill in all fields.");
+      setAlertSuccess(false);
+      setAlertMessage(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please fill in all fields.");
+      setOpenAlert(true);
     }
   };
 
   return (
-    <Box sx={{ py: 4, px: 4, direction: language === "AR" ? 'rtl' : 'ltr' }}>
-      {/* Header */}
+    <Box sx={{
+      py: 4,
+      px: { xs: 1, sm: 4 },
+      direction: language === "AR" ? 'rtl' : 'ltr',
+      overflowX: 'hidden'
+    }}>
       <Box sx={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: { xs: 'center', sm: 'space-between' },
         alignItems: 'center',
         mb: 6,
         flexWrap: 'wrap',
-        gap: 2
+        gap: 2,
+        '@media (max-width: 530px)': {
+          justifyContent: 'center'
+        }
       }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
           <img src={logo} alt="Logo" style={{ maxWidth: "200px", height: "auto" }} />
@@ -99,14 +115,13 @@ function Contact({ language }) {
         </Box>
       </Box>
 
-      <Container maxWidth="lg">
-        {/* Hero Section */}
+      <Container maxWidth="lg" sx={{ px: { xs: 1, sm: 2 } }}>
         <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="h2" sx={{ 
+          <Typography variant="h2" sx={{
             color: '#1a237e',
             fontWeight: 700,
             mb: 3,
-            fontSize: { xs: '2rem', md: '2.5rem' }
+            fontSize: { xs: '2rem', md: '2rem' }
           }}>
             {content[language].title}
           </Typography>
@@ -116,20 +131,18 @@ function Contact({ language }) {
           <Typography sx={{ color: '#666', mb: 6, maxWidth: '800px', mx: 'auto' }}>
             {content[language].description}
           </Typography>
-          <Box sx={{ 
+          <Box sx={{
             maxWidth: '800px',
             mx: 'auto',
             borderRadius: '20px',
             overflow: 'hidden',
             boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
           }}>
-            <img src={heroImage} alt="Hospital" style={{ width: '100%', height: 'auto' }} />
+            <img src={heroImage} alt="Hospital" style={{ width: '100%', height: 'auto', maxWidth: '100%' }} />
           </Box>
         </Box>
 
-        {/* Contact Form and Info */}
         <Grid container spacing={6}>
-          {/* Contact Form */}
           <Grid item xs={12} md={6}>
             <Box component="form" onSubmit={handleSubmit}>
               <TextField
@@ -183,9 +196,8 @@ function Contact({ language }) {
             </Box>
           </Grid>
 
-          {/* Contact Information */}
           <Grid item xs={12} md={6}>
-            <Box sx={{ 
+            <Box sx={{
               p: 4,
               borderRadius: '20px',
               background: 'linear-gradient(45deg, #1a237e08, #0277bd08)',
@@ -203,16 +215,15 @@ function Contact({ language }) {
                       muhammadaljamal@gmail.com
                     </Link>
                   </Box>
-              
                 </Box>
+                
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <FaEnvelope />
                   <Box>
-                  <Link href="mailto:moh.aljamal@najransh.sa" sx={{ display: 'block', color: '#666', textDecoration: 'none' }}>
+                    <Link href="mailto:moh.aljamal@najransh.sa" sx={{ display: 'block', color: '#666', textDecoration: 'none' }}>
                       moh.aljamal@najransh.sa
                     </Link>
                   </Box>
-              
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -233,6 +244,57 @@ function Contact({ language }) {
           </Grid>
         </Grid>
       </Container>
+
+      {/* Custom Alert Dialog */}
+      <Dialog
+  open={openAlert}
+  onClose={() => setOpenAlert(false)}
+  PaperProps={{
+    sx: {
+      borderRadius: '20px',
+      background: 'white',
+      minWidth: '300px',
+      maxWidth: '90%',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+      border: `2px solid ${alertSuccess ? '#4CAF50' : '#f44336'}`
+    }
+  }}
+>
+  <DialogTitle sx={{ 
+    color: alertSuccess ? '#4CAF50' : '#f44336', 
+    textAlign: 'center',
+    pt: 3,
+    pb: 2,
+    fontSize: '1.5rem',
+    fontWeight: 600
+  }}>
+    {alertSuccess ? 
+      (language === "AR" ? "تم بنجاح!" : "Success!") : 
+      (language === "AR" ? "تنبيه!" : "Alert!")}
+    <IconButton
+      onClick={() => setOpenAlert(false)}
+      sx={{
+        position: 'absolute',
+        right: language === "AR" ? 'auto' : 8,
+        left: language === "AR" ? 8 : 'auto',
+        top: 8,
+        color: alertSuccess ? '#4CAF50' : '#f44336'
+      }}
+    >
+      <FaTimes />
+    </IconButton>
+  </DialogTitle>
+  <DialogContent sx={{ 
+    color: '#666',
+    textAlign: 'center',
+    pb: 3
+  }}>
+    <Typography sx={{ fontSize: '1.1rem' }}>
+      {alertMessage}
+    </Typography>
+  </DialogContent>
+</Dialog>
+
     </Box>
   );
 }
