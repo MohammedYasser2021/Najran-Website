@@ -24,6 +24,7 @@ import testimonialImage from "../assets/image1.png";
 import Post1 from "../assets/post_1.jpg";
 import Post2 from "../assets/post_2.jpg";
 import Post3 from "../assets/post_3.jpg";
+import Post4 from "../assets/post_4.jpg";
 
 function LandingPage({language}) {
   const theme = useTheme();
@@ -38,8 +39,8 @@ const [alertSuccess, setAlertSuccess] = useState(true);
 
   const content = {
     AR: {
-      title: "مركز متخصص للرعاية الطبية المتكاملة",
-      subtitle: "نقدم أفضل الخدمات الطبية بأحدث التقنيات العالمية مع نخبة من الأطباء المتخصصين",
+      title: "مراكزنا الطبية المتخصصة للرعاية الطبية المتكاملة",
+      subtitle: "نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية مع نخبة من الاطباء الاستشاريين",
       bookNow: "احجز موعدك الآن",
       services: "خدماتنا المتميزة",
       contactForm: "قدم بياناتك للتواصل",
@@ -49,25 +50,30 @@ const [alertSuccess, setAlertSuccess] = useState(true);
       submit: "إرسال الطلب",
       posts: [
         {
-          title: "جراحة العظام والمفاصل",
+          title: "مركز جراحات العظام والمفاصل",
           image: Post1,
-          description: "نقدم أحدث التقنيات في جراحات العظام والمفاصل مع فريق متخصص من الأطباء."
+          description: "نخبة من افضل الجراحين الاستشاريين بمنطقة نجران لجراحات العظام والعمود الفقري ومفاصل الركبة والحوض والكتف وجراحات اليد الميكروسكوبية"
         },
         {
-          title: "جراحات الذكورة والعقم",
+          title: "مركز جراحات المسالك البولية وجراحات الذكورة والعقم للرجال",
           image: Post2,
-          description: "مركز متخصص في علاج مشاكل الذكورة والعقم بأحدث الطرق العلاجية."
+          description: "مركز متخصص في علاج امراض المسالك البولية وعلاج تضخم البروستاتا بالتبخير (جهاز الريزيوم) كما نتميز بوجود خبير زراعة الدعامات لعلاج الضعف الجنسي للرجال د. محمد حبوس استشاري جراحات الضعف الجنسي وعقم الرجال"
         },
         {
-          title: "جراحات السمنة",
+          title: "مركز جراحات السمنة",
           image: Post3,
-          description: "نقدم حلولاً متكاملة لعلاج السمنة من خلال أحدث تقنيات الجراحة."
+          description: "المركز الوحيد المعتمد لجراحات السمنة في نجران"
+        },
+        {
+          title: "مركز طب وجراحة العيون",
+          image: Post4,
+          description: "افضل اجهزة علاج مشاكل النظر وجراحات العيون بأنواعها"
         }
       ]
     },
     EN: {
-      title: "Specialized Center for Integrated Medical Care",
-      subtitle: "Providing the best medical services with latest technologies and elite specialists",
+      title: "Specialized Centers for Integrated Medical Care",
+      subtitle: "We offer specialized medical services with the latest global technologies, provided by a team of expert consultants.",
       bookNow: "Book Now",
       services: "Our Distinguished Services",
       contactForm: "Contact Information",
@@ -77,19 +83,24 @@ const [alertSuccess, setAlertSuccess] = useState(true);
       submit: "Send Request",
       posts: [
         {
-          title: "Orthopedic Surgery",
+          title: "Orthopedic Surgeries Center",
           image: Post1,
-          description: "We offer the latest techniques in orthopedic surgery with specialized medical team."
+          description: "A team of the best consultant surgeons in the Najran region for orthopedic surgeries, spine surgeries, knee, hip, and shoulder joint surgeries, as well as microsurgical hand surgeries."
         },
         {
-          title: "Male Fertility Treatment",
+          title: "Male Fertility Surgeries Center",
           image: Post2,
-          description: "Specialized center in treating male fertility issues with latest therapeutic methods."
+          description: "A specialized center for treating urological diseases and prostate enlargement through vaporization (Rezum device). We also stand out for having an expert in penile implant surgeries for treating male erectile dysfunction. Dr. Mohammed Habous, Consultant in Erectile Dysfunction and Male Infertility Surgeries."
         },
         {
-          title: "Obesity Surgery",
+          title: "Obesity Surgeries Center",
           image: Post3,
-          description: "We provide integrated solutions for obesity treatment through latest surgical techniques."
+          description: "The only accredited center for obesity surgeries in Najran"
+        },
+        {
+          title: "Ophthalmology and Eye Surgery Center",
+          image: Post4,
+          description: "The best devices for treating vision problems and all types of eye surgeries."
         }
       ]
     }
@@ -106,14 +117,14 @@ const [alertSuccess, setAlertSuccess] = useState(true);
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد من المركز الطبي
+          طلب حجز جديد من مراكزنا الطبية
           ---------------------------
           اسم المريض: ${name}
           رقم الهاتف: ${phone}
           البريد الإلكتروني: ${email}
           تاريخ الطلب: ${new Date().toLocaleString('ar-SA')}
           ---------------------------
-          New Booking Request from Medical Center
+          New Booking Request from Medical Centers
           Patient Name: ${name}
           Phone Number: ${phone}
           Email: ${email}
@@ -188,7 +199,7 @@ const [alertSuccess, setAlertSuccess] = useState(true);
           flexDirection: { xs: 'column', md: 'row' },
           alignItems: "center",
           gap: { xs: 4, md: 6 },
-          mb: { xs: 8, md: 12 },
+          mb: { xs: 8, md: 0 },
           minHeight: { xs: 'auto', md: '70vh' }
         }}>
           <Box sx={{
@@ -276,7 +287,7 @@ const [alertSuccess, setAlertSuccess] = useState(true);
             mb: { xs: 6, md: 8 },
             fontWeight: 700,
             color: '#1a237e',
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
+            fontSize: { xs: '1.7rem', sm: '2.5rem', md: '3rem' }
           }}
         >
           {currentContent.services}
@@ -318,7 +329,7 @@ const [alertSuccess, setAlertSuccess] = useState(true);
                     sx={{
                       fontWeight: 700,
                       color: '#1a237e',
-                      fontSize: { xs: '1.25rem', md: '1.5rem' }
+                      fontSize: { xs: '1.25rem', md: '1.25rem' }
                     }}
                   >
                     {post.title}

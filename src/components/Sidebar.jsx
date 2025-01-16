@@ -33,6 +33,7 @@ import fat from "../assets/fat.png";
 import surgeryroom from "../assets/surgery-room.png";
 import homebutton from "../assets/home-button.png";
 import orthopedics from "../assets/orthopedics.png";
+import eyeexam from "../assets/eye-exam.png";
 import phone from "../assets/phone.png";
 import { FaBars } from "react-icons/fa";
 import { MdGTranslate } from "react-icons/md";
@@ -48,22 +49,28 @@ const NAVIGATION = [
     path: "/",
   },
   {
-    title: "Orthopedic Surgery",
-    titleAr: "جراحة العظام والمفاصل",
+    title: "Orthopedic Surgeries Center",
+    titleAr: "مركز جراحات العظام ",
     icon: <img src={orthopedics} className="w-[25px] h-[25px]" />,
     path: "/orthopedicsurgery",
   },
   {
-    title: "Male Fertility",
-    titleAr: "جراحات الذكورة والعقم",
+    title: "Male Fertility Surgeries Center",
+    titleAr: "مركز جراحات المسالك والذكورة",
     icon: <img src={surgeryroom} className="w-[25px] h-[25px]" />,
     path: "/malefertility",
   },
   {
-    title: "Obesity Surgery",
-    titleAr: "جراحات السمنة",
+    title: "Obesity Surgeries Center",
+    titleAr: "مركز جراحات السمنة",
     icon: <img src={fat} className="w-[25px] h-[25px]" />,
     path: "/obesitysurgery",
+  },
+  {
+    title: "Ophthalmology and Eye Surgery Center",
+    titleAr: "مركز جراحات العيون",
+    icon: <img src={eyeexam} className="w-[25px] h-[25px]" />,
+    path: "/eyesurgery",
   },
   {
     title: "Contact Us",
@@ -104,17 +111,6 @@ function DashboardLayoutBasic({ language, setLanguage, ...props }) {
     setAdminOpen(false);
   }, [location]);
 
-  const toggleAdminMenu = () => {
-    setAdminOpen(!adminOpen);
-  };
-
-  const handleUserIconClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClosePopover = () => {
-    setAnchorEl(null);
-  };
 
   const open = Boolean(anchorEl);
   const id = open ? "user-popover" : undefined;

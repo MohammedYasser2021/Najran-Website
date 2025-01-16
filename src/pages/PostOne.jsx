@@ -16,11 +16,11 @@ const [alertMessage, setAlertMessage] = useState("");
 const [alertSuccess, setAlertSuccess] = useState(true);
   const content = {
     AR: {
-      title: "جراحة العظام والمفاصل",
-      description: `يضم قسم جراحات العظام والمفاصل في تخصصي نجران عدد كبير من الجراحين الإستشاريين في مجال أمراض وجراحات العظام، يتميزون بخبرات طويلة في هذا المجال ولهم مساهمات وانجازات علمية تم نشرها في المؤتمرات العالمية
+      title: "مركز جراحات العظام ",
+      description: `نخبة من افضل الجراحين الاستشاريين بمنطقة نجران لجراحات العظام والعمود الفقري ومفاصل الركبة والحوض والكتف وجراحات اليد الميكروسكوبية
 
       فريقنا الطبي:
-      • استشاريون متخصصون في جراحة العظام
+      • استشاريون متخصصون في جراحات العظام
       • أخصائيو علاج طبيعي معتمدون
       • طاقم تمريض مؤهل
 
@@ -45,11 +45,11 @@ const [alertSuccess, setAlertSuccess] = useState(true);
       submit: "إرسال الطلب"
     },
     EN: {
-      title: "Orthopedic Surgery",
-      description: `The Orthopedic and Joint Surgery Department at Najar Specialized Hospital includes a large number of consultant surgeons specializing in bone diseases and surgeries. They are distinguished by their extensive experience in this field and have made scientific contributions and achievements published in international conferences.
+      title: "Orthopedic Surgeries Center",
+      description: `A selection of the best consultant surgeons in the Najran region for orthopedic surgeries, spine surgeries, knee, hip, and shoulder joint surgeries, as well as microsurgical hand surgeries.
 
       Our Medical Team:
-      • Orthopedic Surgery Consultants
+      • Orthopedic Surgeries Consultants
       • Certified Physical Therapists
       • Qualified Nursing Staff
 
@@ -82,12 +82,12 @@ const [alertSuccess, setAlertSuccess] = useState(true);
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد - قسم جراحة العظام والمفاصل
+           طلب حجز جديد - مركز جراحات العظام 
           ---------------------------
           اسم المريض: ${name}
           رقم الهاتف: ${phone}
           البريد الإلكتروني: ${email}
-          القسم: جراحة العظام والمفاصل
+          القسم: جراحات العظام 
           تاريخ الطلب: ${new Date().toLocaleString('ar-SA')}
         `
       };

@@ -5,12 +5,13 @@ import OrthopedicSurgery from "./pages/PostOne";
 import MaleFertility from "./pages/PostTwo";
 import ObesitySurgery from "./pages/PostThree";
 import Contact from "./pages/Contact";
+import EyeSurgery from "./pages/PostFour";
 
 import { useEffect, useState } from "react";
 
 const App = () => {
   const [language, setLanguage] = useState(() => {
-    const storedLanguage = localStorage.getItem("language") || "EN";
+    const storedLanguage = localStorage.getItem("language") || "AR";
     document.documentElement.dir = storedLanguage === "AR" ? "rtl" : "ltr"; // تعيين الاتجاه عند التحميل
     return storedLanguage;
   });
@@ -65,15 +66,28 @@ const App = () => {
               />
             }
           />
-                    <Route
+
+<Route
+            path="/eyesurgery"
+            element={
+              <EyeSurgery
+                language={language}
+                setLanguage={setLanguage}
+              />
+            }
+          />
+          
+          <Route
             path="/contact"
             element={
               <Contact
                 language={language}
                 setLanguage={setLanguage}
               />
+              
             }
           />
+
       
         </Route>
       </Routes>

@@ -1,46 +1,41 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button, Dialog, DialogTitle, DialogContent, TextField, IconButton } from '@mui/material';
 import { FaPhoneAlt, FaTimes } from "react-icons/fa";
-import Post2 from "../assets/post_2.jpg";
+import Post4 from "../assets/post_4.jpg";
 import logo from "../assets/nagran.png";
 import testimonialImage from "../assets/image1.png";
 import emailjs from '@emailjs/browser';
 
-function MaleFertility({ language }) {
+function EyeSurgery({ language }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
-const [alertMessage, setAlertMessage] = useState("");
-const [alertSuccess, setAlertSuccess] = useState(true);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSuccess, setAlertSuccess] = useState(true);
+
   const content = {
     AR: {
-      title: "مركز جراحات المسالك البولية وجراحات الذكورة والعقم للرجال",
-      description: `تعاني من تضخم البروستاتا والتعب المستمر؟ 
-الآن عالج تضخم البروستاتا الحميد بالتبخير مع أحدث التقنيات(الريزوم) على يد نخبة من أمهر الاستشاريين بمستشفى تخصصي نجران 
-- علاج سريع وآمن بدون جراحة.
-- بديل مناسب للأدوية المستخدمة
-- تحافظ على الصحة الجنسية والتحكم في البول مقارنة بالطرق الجراحية الأخرى
-- فترة تعافي سريعة جدًا.
-- وفق أعلى نسب النجاح العالمي
+      title: "مركز طب وجراحة العيون",
+      description: `نخبة من أفضل استشاريي طب وجراحة العيون في منطقة نجران متخصصون في جميع جراحات وعلاج أمراض العيون
 
       فريقنا الطبي:
-      • استشاريون في أمراض المسالك والذكورة
-      • أخصائيو المسالك البولية
-      • خبراء في العلاج الهرموني
+      • استشاريون متخصصون في طب وجراحة العيون
+      • أخصائيو بصريات معتمدون
+      • طاقم تمريض مؤهل
 
       التقنيات المستخدمة:
-      • أحدث أجهزة التشخيص
-      • تقنيات العلاج المتقدمة
-      • مختبرات متطورة للتحاليل`,
+      • أحدث أجهزة فحص وتشخيص أمراض العيون
+      • معدات جراحية متطورة
+      • تقنيات الليزر الحديثة`,
       services: [
-        "تشخيص وعلاج العقم عند الرجال",
-        "علاج ضعف الخصوبة",
-        "جراحات دوالي الخصية",
-        "علاج الضعف الجنسي",
-        "حقن المجهري",
-        "العلاج الهرموني المتقدم"
+        "عمليات تصحيح النظر بالليزر",
+        "علاج المياه البيضاء والزرقاء",
+        "جراحة الشبكية والقرنية",
+        "علاج أمراض العيون للأطفال",
+        "تشخيص وعلاج اعتلال الشبكية السكري",
+        "تركيب العدسات الطبية المتطورة"
       ],
       servicesTitle: "خدماتنا المتخصصة:",
       bookNow: "احجز موعدك الآن",
@@ -51,28 +46,25 @@ const [alertSuccess, setAlertSuccess] = useState(true);
       submit: "إرسال الطلب"
     },
     EN: {
-      title: "Male Fertility Surgeries Center",
-      description: `Do you suffer from prostate enlargement and constant fatigue?
-Now, treat benign prostate enlargement with vaporization using the latest technology (Rezūm) by a team of skilled consultants at Najar Specialized Hospital.
+      title: "Ophthalmology and Eye Surgery Center",
+      description: `Elite team of the best eye medicine and surgery consultants in Najran region specialized in all eye surgeries and treatments
 
-Fast and safe treatment without surgeries, suitable alternative to the medications used, maintains sexual health and urinary control compared to other surgical methods, very fast recovery time, high global success rates.
-
-Our Medical Team:
-      • Male Fertility Consultants
-      • Urologists
-      • Hormonal Therapy Experts
+      Our Medical Team:
+      • Eye Medicine and Surgery Consultants
+      • Certified Optometrists
+      • Qualified Nursing Staff
 
       Technologies Used:
-      • Latest Diagnostic Equipment
-      • Advanced Treatment Technologies
-      • Modern Laboratory Facilities`,
+      • Latest Eye Examination and Diagnostic Devices
+      • Advanced Surgical Equipment
+      • Modern Laser Technologies`,
       services: [
-        "Male Infertility Diagnosis and Treatment",
-        "Fertility Enhancement",
-        "Varicocele Surgeries",
-        "Sexual Dysfunction Treatment",
-        "ICSI Treatment",
-        "Advanced Hormonal Therapy"
+        "Laser Vision Correction",
+        "Cataract and Glaucoma Treatment",
+        "Retina and Cornea Surgery",
+        "Pediatric Eye Treatment",
+        "Diabetic Retinopathy Diagnosis and Treatment",
+        "Advanced Lens Implantation"
       ],
       servicesTitle: "Our Specialized Services:",
       bookNow: "Book Now",
@@ -91,12 +83,12 @@ Our Medical Team:
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد - مركز جراحات المسالك والذكورة
+           طلب حجز جديد - مركز طب وجراحة العيون
           ---------------------------
           اسم المريض: ${name}
           رقم الهاتف: ${phone}
           البريد الإلكتروني: ${email}
-          القسم: جراحات المسالك والذكورة
+          القسم: طب وجراحة العيون
           تاريخ الطلب: ${new Date().toLocaleString('ar-SA')}
         `
       };
@@ -131,32 +123,30 @@ Our Medical Team:
 
   return (
     <Box sx={{ py: 4, px: 4 }}>
-      {/* Header */}
       <Box sx={{
-  display: 'flex',
-  justifyContent: { xs: 'center', sm: 'space-between' },
-  alignItems: 'center',
-  mb: 6,
-  flexWrap: 'wrap',
-  gap: 2,
-  '@media (max-width: 530px)': {
-    justifyContent: 'center'
-  }
-}}>
-  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
-    <img src={logo} alt="Logo" style={{ maxWidth: "200px", height: "auto" }} />
-  </Box>
-  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
-    <img src={testimonialImage} alt="testimonialImage" style={{ maxWidth: "200px", height: "auto" }} />
-  </Box>
-</Box>
+        display: 'flex',
+        justifyContent: { xs: 'center', sm: 'space-between' },
+        alignItems: 'center',
+        mb: 6,
+        flexWrap: 'wrap',
+        gap: 2,
+        '@media (max-width: 530px)': {
+          justifyContent: 'center'
+        }
+      }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
+          <img src={logo} alt="Logo" style={{ maxWidth: "200px", height: "auto" }} />
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2}}>
+          <img src={testimonialImage} alt="testimonialImage" style={{ maxWidth: "200px", height: "auto" }} />
+        </Box>
+      </Box>
 
-      {/* Content */}
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
         <Box sx={{ flex: 1 }}>
           <img
-            src={Post2}
-            alt="Male Fertility"
+            src={Post4}
+            alt="Eye Surgery"
             style={{
               width: '100%',
               borderRadius: '20px',
@@ -165,8 +155,7 @@ Our Medical Team:
             }}
           />
           
-          {/* Services Section */}
-          <Typography variant="h5" sx={{ 
+          <Typography variant="h5" sx={{
             color: '#1a237e',
             fontWeight: 700,
             mb: 2,
@@ -176,11 +165,11 @@ Our Medical Team:
             {content[language].servicesTitle}
           </Typography>
           
-          <Box sx={{ 
+          <Box sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
             gap: 2,
-            mb: 4 
+            mb: 4
           }}>
             {content[language].services.map((service, index) => (
               <Box key={index} sx={{
@@ -248,7 +237,6 @@ Our Medical Team:
         </Box>
       </Box>
 
-      {/* Contact Dialog */}
       <Dialog
         open={openDialog}
         onClose={() => setOpenDialog(false)}
@@ -337,7 +325,8 @@ Our Medical Team:
           </Box>
         </DialogContent>
       </Dialog>
-            <Dialog
+
+      <Dialog
         open={openAlert}
         onClose={() => setOpenAlert(false)}
         PaperProps={{
@@ -351,16 +340,16 @@ Our Medical Team:
           }
         }}
       >
-        <DialogTitle sx={{ 
-          color: alertSuccess ? '#4CAF50' : '#f44336', 
+        <DialogTitle sx={{
+          color: alertSuccess ? '#4CAF50' : '#f44336',
           textAlign: 'center',
           pt: 3,
           pb: 2,
           fontSize: '1.5rem',
           fontWeight: 600
         }}>
-          {alertSuccess ? 
-            (language === "AR" ? "تم بنجاح!" : "Success!") : 
+          {alertSuccess ?
+            (language === "AR" ? "تم بنجاح!" : "Success!") :
             (language === "AR" ? "تنبيه!" : "Alert!")}
           <IconButton
             onClick={() => setOpenAlert(false)}
@@ -375,7 +364,7 @@ Our Medical Team:
             <FaTimes />
           </IconButton>
         </DialogTitle>
-        <DialogContent sx={{ 
+        <DialogContent sx={{
           color: '#666',
           textAlign: 'center',
           pb: 3
@@ -389,4 +378,4 @@ Our Medical Team:
   );
 }
 
-export default MaleFertility;
+export default EyeSurgery;

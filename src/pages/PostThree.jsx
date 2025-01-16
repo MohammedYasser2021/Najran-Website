@@ -16,7 +16,7 @@ const [alertMessage, setAlertMessage] = useState("");
 const [alertSuccess, setAlertSuccess] = useState(true);
   const content = {
     AR: {
-      title: "جراحات السمنة",
+      title: " مركز جراحات السمنة",
       description: `مركز السمنة والنحافة بمستشفى تخصصي نجران، الوحيـد المعتمـد لجراحـات السمنـة في نجـــران 
 تخلص من مشكلات السمنة مع أفضل خبراء جراحة السمنة في مستشفى تخصصي نجران وبأحدث التقنيات الطبية
  جراحات تكميم المعدة
@@ -50,7 +50,7 @@ const [alertSuccess, setAlertSuccess] = useState(true);
       submit: "إرسال الطلب"
     },
     EN: {
-      title: "Obesity Surgery",
+      title: "Obesity Surgeries Center",
       description: `Obesity and Thinness Center at Najar Specialized Hospital, the only accredited center for obesity surgeries in Najran, Get rid of obesity problems with the best obesity surgery experts at Najar Specialized Hospital, using the latest medical technologies.
 Sleeve gastrectomy surgeries
 Bypass surgeries
@@ -91,7 +91,7 @@ Traditional and smart capsule procedures
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد - قسم جراحات السمنة
+          طلب حجز جديد - مركز جراحات السمنة
           ---------------------------
           اسم المريض: ${name}
           رقم الهاتف: ${phone}
