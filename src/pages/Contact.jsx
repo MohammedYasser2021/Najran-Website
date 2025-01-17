@@ -51,43 +51,42 @@ function Contact({ language }) {
         email: email,
         from_name: name,
         message: `
-          رسالة جديدة من نموذج التواصل
-          ---------------------------
-          الاسم: ${name}
-          رقم الهاتف: ${phone}
-          البريد الإلكتروني: ${email}
-          الرسالة: ${message}
-          التاريخ: ${new Date().toLocaleString('ar-SA')}
+          Name: ${name}
+          Phone: ${phone}
+          Email: ${email}
+          Message: ${message}
+          Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
-
+  
       emailjs.send(
-        'service_mn9quw6',
-        'template_9it1hcr',
+        'service_ohi49va',
+        'template_unnyzap',
         templateParams,
-        'eGZ4YSe0tvpqV-HZ5'
+        'OW5cLPqmyZR4ZC-Cb'
       )
       .then(() => {
         setAlertSuccess(true);
-        setAlertMessage(language === "AR" ? "تم إرسال رسالتك بنجاح!" : "Your message has been sent successfully!");
+        setAlertMessage(language === "AR" ? "تم إرسال بياناتك بنجاح!" : "Your information has been sent successfully!");
         setOpenAlert(true);
+        setOpenDialog(false);
         setName("");
         setPhone("");
         setEmail("");
-        setMessage("");
       })
       .catch((error) => {
         console.error("Error:", error);
         setAlertSuccess(false);
-        setAlertMessage(language === "AR" ? "حدث خطأ في إرسال الرسالة" : "Error sending message");
+        setAlertMessage(language === "AR" ? "حدث خطأ في إرسال البيانات" : "Error submitting data");
         setOpenAlert(true);
       });
     } else {
       setAlertSuccess(false);
-      setAlertMessage(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please fill in all fields.");
+      setAlertMessage(language === "AR" ? "يرجى إدخال جميع البيانات." : "Please enter all information.");
       setOpenAlert(true);
     }
   };
+
 
   return (
     <Box sx={{

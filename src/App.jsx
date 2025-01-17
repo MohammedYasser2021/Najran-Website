@@ -6,6 +6,7 @@ import MaleFertility from "./pages/PostTwo";
 import ObesitySurgery from "./pages/PostThree";
 import Contact from "./pages/Contact";
 import EyeSurgery from "./pages/PostFour";
+import BookingPage  from "./pages/BookingPage";
 
 import { useEffect, useState } from "react";
 
@@ -81,6 +82,16 @@ const App = () => {
             path="/contact"
             element={
               <Contact
+                language={language}
+                setLanguage={setLanguage}
+              />
+              
+            }
+          />
+                    <Route
+            path="/booking"
+            element={
+              <BookingPage
                 language={language}
                 setLanguage={setLanguage}
               />

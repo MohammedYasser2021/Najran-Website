@@ -91,21 +91,18 @@ Traditional and smart capsule procedures
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد - مركز جراحات السمنة
-          ---------------------------
-          اسم المريض: ${name}
-          رقم الهاتف: ${phone}
-          البريد الإلكتروني: ${email}
-          القسم: جراحات السمنة
-          تاريخ الطلب: ${new Date().toLocaleString('ar-SA')}
+          Name: ${name}
+          Phone: ${phone}
+          Email: ${email}
+          Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
-
+  
       emailjs.send(
-        'service_mn9quw6',
-        'template_9it1hcr',
+        'service_ohi49va',
+        'template_unnyzap',
         templateParams,
-        'eGZ4YSe0tvpqV-HZ5'
+        'OW5cLPqmyZR4ZC-Cb'
       )
       .then(() => {
         setAlertSuccess(true);

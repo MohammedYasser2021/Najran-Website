@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from '@emailjs/browser';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -34,8 +35,9 @@ function LandingPage({language}) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
-const [alertMessage, setAlertMessage] = useState("");
-const [alertSuccess, setAlertSuccess] = useState(true);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSuccess, setAlertSuccess] = useState(true);
+  const navigate = useNavigate();
 
   const content = {
     AR: {
@@ -117,26 +119,18 @@ const [alertSuccess, setAlertSuccess] = useState(true);
         email: email,
         from_name: name,
         message: `
-          طلب حجز جديد من مراكزنا الطبية
-          ---------------------------
-          اسم المريض: ${name}
-          رقم الهاتف: ${phone}
-          البريد الإلكتروني: ${email}
-          تاريخ الطلب: ${new Date().toLocaleString('ar-SA')}
-          ---------------------------
-          New Booking Request from Medical Centers
-          Patient Name: ${name}
-          Phone Number: ${phone}
+          Name: ${name}
+          Phone: ${phone}
           Email: ${email}
           Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
   
       emailjs.send(
-        'service_mn9quw6',
-        'template_9it1hcr',
+        'service_ohi49va',
+        'template_unnyzap',
         templateParams,
-        'eGZ4YSe0tvpqV-HZ5'
+        'OW5cLPqmyZR4ZC-Cb'
       )
       .then(() => {
         setAlertSuccess(true);
@@ -231,7 +225,7 @@ const [alertSuccess, setAlertSuccess] = useState(true);
             <Button
               variant="contained"
               size="large"
-              onClick={() => setOpenDialog(true)}
+              onClick={() => navigate('/booking')}
               sx={{
                 borderRadius: '30px',
                 px: 4,
