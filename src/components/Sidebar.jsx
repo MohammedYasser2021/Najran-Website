@@ -38,6 +38,7 @@ import phone from "../assets/phone.png";
 import { FaBars } from "react-icons/fa";
 import { MdGTranslate } from "react-icons/md";
 import logo from "../assets/image2.jpeg";
+import bookingImg from "../assets/online-booking.png";
 import "../App.css";
 
 const NAVIGATION = [
@@ -66,11 +67,18 @@ const NAVIGATION = [
     icon: <img src={fat} className="w-[25px] h-[25px]" />,
     path: "/obesitysurgery",
   },
+
   {
     title: "Ophthalmology and Eye Surgery Center",
     titleAr: "مركز جراحات العيون",
     icon: <img src={eyeexam} className="w-[25px] h-[25px]" />,
     path: "/eyesurgery",
+  },
+  {
+    title: "Booking",
+    titleAr: "حجز",
+    icon: <img src={bookingImg} className="w-[25px] h-[25px]" />,
+    path: "/booking",
   },
   {
     title: "Contact Us",

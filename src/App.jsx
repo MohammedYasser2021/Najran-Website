@@ -88,7 +88,7 @@ const App = () => {
               
             }
           />
-                    <Route
+          <Route
             path="/booking"
             element={
               <BookingPage
