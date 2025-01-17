@@ -26,6 +26,7 @@ import Post1 from "../assets/post_1.jpg";
 import Post2 from "../assets/post_2.jpg";
 import Post3 from "../assets/post_3.jpg";
 import Post4 from "../assets/post_4.jpg";
+import axios from "axios";
 
 function LandingPage({language}) {
   const theme = useTheme();
@@ -115,6 +116,22 @@ function LandingPage({language}) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (name && phone && email) {
+      const data = {
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Date: new Date().toLocaleString('en-US')
+      }
+
+      const sheetResponse =  axios.post(
+        "https://sheetdb.io/api/v1/r8fxi8hlllcta",
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       const templateParams = {
         email: email,
         from_name: name,

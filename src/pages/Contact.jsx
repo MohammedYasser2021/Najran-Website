@@ -5,6 +5,7 @@ import logo from "../assets/nagran.png";
 import testimonialImage from "../assets/image1.png";
 import heroImage from "../assets/hospital.jpg";
 import emailjs from '@emailjs/browser';
+import axios from "axios";
 
 function Contact({ language }) {
   const [name, setName] = useState("");
@@ -47,6 +48,22 @@ function Contact({ language }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name && phone && email && message) {
+      const data = {
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Date: new Date().toLocaleString('en-US')
+      }
+
+      const sheetResponse =  axios.post(
+        "https://sheetdb.io/api/v1/r8fxi8hlllcta",
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       const templateParams = {
         email: email,
         from_name: name,

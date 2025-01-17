@@ -5,6 +5,7 @@ import Post4 from "../assets/post_4.jpg";
 import logo from "../assets/nagran.png";
 import testimonialImage from "../assets/image1.png";
 import emailjs from '@emailjs/browser';
+import axios from "axios";
 
 function EyeSurgery({ language }) {
   const [openDialog, setOpenDialog] = useState(false);
@@ -14,6 +15,7 @@ function EyeSurgery({ language }) {
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(true);
+
 
   const content = {
     AR: {
@@ -79,6 +81,22 @@ function EyeSurgery({ language }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (name && phone && email) {
+      const data = {
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Date: new Date().toLocaleString('en-US')
+      }
+
+      const sheetResponse =  axios.post(
+        "https://sheetdb.io/api/v1/r8fxi8hlllcta",
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       const templateParams = {
         email: email,
         from_name: name,

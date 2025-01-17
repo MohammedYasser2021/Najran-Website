@@ -15,6 +15,7 @@ import { FaPhoneAlt, FaTimes } from "react-icons/fa";
 import logo from "../assets/nagran.png";
 import heroImage from "../assets/hospital.jpg";
 import testimonialImage from "../assets/image1.png";
+import axios from "axios";
 
 function BookingPage({language}) {
   const [name, setName] = useState("");
@@ -48,14 +49,23 @@ function BookingPage({language}) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (name && phone && email) {
-    //   // Send to Google Sheets
-    //   fetch("https://script.google.com/macros/s/AKfycbxAEFeaEWUBWrNymMgnf_TyULyf7tTcm_IeNLM9ee0Av2RAX888aYcyyiwVSM1uZv_m/exec",{
-    //     method:"POST",
-    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //     body:(`Name=${name}&Phone=${phone}&Email=${email}&Date=${new Date().toLocaleString('en-US')}`)
-    //   })
-      
-  
+
+      const data = {
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Date: new Date().toLocaleString('en-US')
+      }
+
+      const sheetResponse =  axios.post(
+        "https://sheetdb.io/api/v1/r8fxi8hlllcta",
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       // EmailJS integration
       const templateParams = {
         email: email,

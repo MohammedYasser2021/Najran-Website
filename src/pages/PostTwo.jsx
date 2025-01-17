@@ -5,6 +5,7 @@ import Post2 from "../assets/post_2.jpg";
 import logo from "../assets/nagran.png";
 import testimonialImage from "../assets/image1.png";
 import emailjs from '@emailjs/browser';
+import axios from "axios";
 
 function MaleFertility({ language }) {
   const [openDialog, setOpenDialog] = useState(false);
@@ -86,7 +87,24 @@ Our Medical Team:
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     if (name && phone && email) {
+      const data = {
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Date: new Date().toLocaleString('en-US')
+      }
+  
+      const sheetResponse =  axios.post(
+        "https://sheetdb.io/api/v1/r8fxi8hlllcta",
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
       const templateParams = {
         email: email,
         from_name: name,
