@@ -6,6 +6,10 @@ import MaleFertility from "./pages/PostTwo";
 import ObesitySurgery from "./pages/PostThree";
 import Contact from "./pages/Contact";
 import EyeSurgery from "./pages/PostFour";
+import InternalMedicine from "./pages/PostFive";
+import WomenHealth  from "./pages/PostSix";
+import InterventionalRadiology  from "./pages/PostSeven";
+import PsychiatryAndAddiction  from "./pages/PostEight";
 import BookingPage  from "./pages/BookingPage";
 
 import { useEffect, useState } from "react";
@@ -98,7 +102,48 @@ const App = () => {
               
             }
           />
+                    <Route
+            path="/internalMedicine"
+            element={
+              <InternalMedicine
+                language={language}
+                setLanguage={setLanguage}
+              />
+              
+            }
+          />
+                 <Route
+            path="/womenHealth"
+            element={
+              <WomenHealth
+                language={language}
+                setLanguage={setLanguage}
+              />
+              
+            }
+          />
 
+<Route
+            path="/InterventionalRadiology"
+            element={
+              <InterventionalRadiology
+                language={language}
+                setLanguage={setLanguage}
+              />
+              
+            }
+          />
+
+<Route
+            path="/PsychiatryAndAddiction"
+            element={
+              <PsychiatryAndAddiction
+                language={language}
+                setLanguage={setLanguage}
+              />
+              
+            }
+          />
       
         </Route>
       </Routes>

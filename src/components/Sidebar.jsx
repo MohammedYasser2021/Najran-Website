@@ -34,6 +34,10 @@ import surgeryroom from "../assets/surgery-room.png";
 import homebutton from "../assets/home-button.png";
 import orthopedics from "../assets/orthopedics.png";
 import eyeexam from "../assets/eye-exam.png";
+import aid from "../assets/first-aid-kit.png";
+import prenatal from "../assets/prenatal-care.png";
+import medical from "../assets/medical.png";
+import alcohol from "../assets/alcohol.png";
 import phone from "../assets/phone.png";
 import { FaBars } from "react-icons/fa";
 import { MdGTranslate } from "react-icons/md";
@@ -73,6 +77,30 @@ const NAVIGATION = [
     titleAr: "مركز جراحات العيون",
     icon: <img src={eyeexam} className="w-[25px] h-[25px]" />,
     path: "/eyesurgery",
+  },
+  {
+    title: "Internal Medicine Center",
+    titleAr: "مركز الطب الباطني",
+    icon: <img src={aid} className="w-[25px] h-[25px]" />,
+    path: "/internalMedicine",
+  },
+  {
+    title: "Women's Health Center",
+    titleAr: "مركز صحة المرأة",
+    icon: <img src={prenatal} className="w-[25px] h-[25px]" />,
+    path: "/womenHealth",
+  },
+  {
+    title: "Interventional Radiology Center",
+    titleAr: " مركز الأشعة التداخلية",
+    icon: <img src={medical} className="w-[25px] h-[25px]" />,
+    path: "/InterventionalRadiology",
+  },
+  {
+    title: "Psychiatry and Addiction Center",
+    titleAr: "   مركز الطب النفسي والادمان ",
+    icon: <img src={alcohol} className="w-[25px] h-[25px]" />,
+    path: "/PsychiatryAndAddiction",
   },
   {
     title: "Booking",
@@ -124,12 +152,13 @@ function DashboardLayoutBasic({ language, setLanguage, ...props }) {
   const id = open ? "user-popover" : undefined;
 
   const drawer = (
-    <div>
+    <div className="overflow-y-auto h-screen">
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          
           p: 2,
         }}
       >

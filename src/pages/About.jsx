@@ -26,6 +26,10 @@ import Post1 from "../assets/post_1.jpg";
 import Post2 from "../assets/post_2.jpg";
 import Post3 from "../assets/post_3.jpg";
 import Post4 from "../assets/post_4.jpg";
+import Post5 from "../assets/post_5.jpg";
+import Post6 from "../assets/post_6.jpg";
+import Post7 from "../assets/post_7.jpg";
+import Post8 from "../assets/post_8.jpg";
 import axios from "axios";
 
 function LandingPage({language}) {
@@ -42,7 +46,7 @@ function LandingPage({language}) {
   const content = {
     AR: {
       title: "مراكزنا الطبية المتخصصة للرعاية الطبية المتكاملة",
-      subtitle: "  نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية مع نخبة من الاطباء الاستشاريين",
+      subtitle: "  نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية مع نخبة من الاطباء الاستشاريين تغنيك عن السفر خارج منطقة نجران",
       bookNow: "احجز موعدك الآن",
       services: "خدماتنا المتميزة",
       contactForm: "قدم بياناتك للتواصل",
@@ -69,12 +73,32 @@ function LandingPage({language}) {
           title: "مركز طب وجراحة العيون",
           image: Post4,
           description: "افضل اجهزة علاج مشاكل النظر وجراحات العيون بأنواعها"
+        },
+        {
+          title: " مركز الطب الباطني",
+          image: Post5,
+          description: "  يلتزم مركز الطب الباطني بتوفير أعلى مستوى من جودة الرعاية الصحية والتي تتراوح من الرعاية الأولية إلى الرعاية المتخصصة والدقيقة للبالغين وكبار السن ذوي الأمراض الحادة والأمراض المزمنة"
+        },
+        {
+          title: "  مركز صحة المرأة",
+          image: Post6,
+          description: "يضم مركز صحة المرأة في مستشفى تخصصي نجران العديد من الاستشاريات الجراحات والأخصائيات في مجال أمراض وجراحات النساء والولادة وتخصصاتها الدقيقة حيث يتوفر لهم العديد من احدث أجهزة التشخيص والعلاج وغرف العمليات المتطورة وكذلك وحدة خاصة بطواريء النساء والولادة ويحتوي القسم على العديد من الوحدات المخصصة لصحة المرأة"
+        },
+        {
+          title: "    مركز الاشعة التداخلية",
+          image: Post7,
+          description: "  أصبحت الاشعة التداخلية تخصص مستقل تم فصله عن تخصص علم الاشعة بعدما كان اختصاص فرعي به وهي مجموعة من التقنيات التي تستخدم الصورة الاشعاعية (التصوير بالأشعة السينية أو التصوير بالموجات فوق الصوتية) في تشخيص وعلاج الكثير من الأمراض والحالات الحرجة. وحدة الأشعة التداخلية للأوعية الدموية والدوالي "
+        },
+        {
+          title: " مركز الطب النفسي والادمان   ",
+          image: Post8,
+          description: "يتميز المركز بأنه الوحيد الذي يوفر العلاج للاضطرابات النفسية وفي نفس الوقت تقديم الاستشارات الحياتية والزوجية ومشاكل الطفولة والمراهقة وكذلك كبار السن. بالإضافة إلى علاج مشاكل الإدمان لمن تتوفر لديه الرغبة الحقيقية للتخلص من هذه الآفة. ويتكون المركز من الوحدات التالية:-	١.  وحدة علاج الإدمان.-	٢. وحدة العلاج السلوكي المعرفي "
         }
       ]
     },
     EN: {
       title: "Specialized Centers for Integrated Medical Care",
-      subtitle: "We offer specialized medical services with the latest global technologies, provided by a team of expert consultants.",
+      subtitle: "We provide specialized medical services with the latest international technologies with a selection of consultant doctors to avoid traveling outside the Najran region.",
       bookNow: "Book Now",
       services: "Our Distinguished Services",
       contactForm: "Contact Information",
@@ -101,6 +125,26 @@ function LandingPage({language}) {
           title: "Ophthalmology and Eye Surgery Center",
           image: Post4,
           description: "The best devices for treating vision problems and all types of eye surgeries."
+        },
+        {
+          title: "Internal Medicine Center",
+          image: Post5,
+          description: "The Internal Medicine Center is committed to providing the highest quality of healthcare ranging from primary care to specialized and accurate care for adults and the elderly with acute and chronic diseases."
+        },
+        {
+          title: "Women's Health Center",
+          image: Post6,
+          description: "The Women's Health Center at Najran Specialized Hospital includes many consultants surgeons and specialists in the field of diseases and surgeries of obstetrics and gynecology and their subspecialties, where they have many of the latest diagnostic and treatment devices and advanced operating rooms, as well as a special unit for obstetrics and gynecology emergencies, and the department contains many units dedicated to women's health"
+        },
+        {
+          title: "Interventional Radiology Center",
+          image: Post7,
+          description: "Interventional radiology has become an independent specialty that has been separated from the specialty of radiology after it was a sub-specialization, which is a set of techniques that use the radiographic image (X-ray imaging or ultrasound) in the diagnosis and treatment of many diseases and critical conditions.. Interventional Radiology Unit for Blood Vessels and Varicose Veins "
+        },
+        {
+          title: "Psychiatry and Addiction Center",
+          image: Post8,
+          description: "The center is distinguished as the only one that provides treatment for psychological disorders while also offering life, marital, and childhood/adolescent counseling, as well as addressing issues related to the elderly. Additionally, it treats addiction problems for those who have a genuine desire to overcome this affliction. The center consists of the following units: 1. Addiction Treatment Unit. 2. Cognitive Behavioral Therapy Unit."
         }
       ]
     }
