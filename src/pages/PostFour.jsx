@@ -11,7 +11,6 @@ function EyeSurgery({ language }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(true);
@@ -44,7 +43,6 @@ function EyeSurgery({ language }) {
       contactForm: "قدم بياناتك للتواصل",
       name: "الاسم",
       phone: "رقم الجوال",
-      email: "البريد الإلكتروني",
       submit: "إرسال الطلب"
     },
     EN: {
@@ -73,18 +71,16 @@ function EyeSurgery({ language }) {
       contactForm: "Contact Information",
       name: "Name",
       phone: "Phone Number",
-      email: "Email Address",
       submit: "Send Request"
     }
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (name && phone && email) {
+    if (name && phone) {
       const data = {
         Name: name,
         Phone: phone,
-        Email: email,
         Date: new Date().toLocaleString('en-US')
       }
 
@@ -98,12 +94,10 @@ function EyeSurgery({ language }) {
         }
       );
       const templateParams = {
-        email: email,
         from_name: name,
         message: `
           Name: ${name}
           Phone: ${phone}
-          Email: ${email}
           Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
@@ -121,7 +115,6 @@ function EyeSurgery({ language }) {
         setOpenDialog(false);
         setName("");
         setPhone("");
-        setEmail("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -307,16 +300,6 @@ function EyeSurgery({ language }) {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               dir={language === "AR" ? "rtl" : "ltr"}
-            />
-            <TextField
-              label={content[language].email}
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 4 }}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              dir={language === "AR" ? "rtl" : "ltr"}
-              type="email"
             />
             <Button
               type="submit"

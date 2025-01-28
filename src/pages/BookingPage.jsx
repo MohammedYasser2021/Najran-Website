@@ -20,7 +20,6 @@ import axios from "axios";
 function BookingPage({language}) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(true);
@@ -31,7 +30,6 @@ function BookingPage({language}) {
       subtitle: "نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية",
       name: "الاسم",
       phone: "رقم الجوال",
-      email: "البريد الإلكتروني",
       submit: "إرسال الطلب"
     },
     EN: {
@@ -39,7 +37,6 @@ function BookingPage({language}) {
       subtitle: "We offer specialized medical services with the latest technologies",
       name: "Name",
       phone: "Phone Number",
-      email: "Email Address",
       submit: "Send Request"
     }
   };
@@ -48,12 +45,11 @@ function BookingPage({language}) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (name && phone && email) {
+    if (name && phone) {
 
       const data = {
         Name: name,
         Phone: phone,
-        Email: email,
         Date: new Date().toLocaleString('en-US')
       }
 
@@ -68,12 +64,10 @@ function BookingPage({language}) {
       );
       // EmailJS integration
       const templateParams = {
-        email: email,
         from_name: name,
         message: `
           Name: ${name}
           Phone: ${phone}
-          Email: ${email}
           Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
@@ -90,7 +84,6 @@ function BookingPage({language}) {
         setOpenAlert(true);
         setName("");
         setPhone("");
-        setEmail("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -191,16 +184,6 @@ function BookingPage({language}) {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 dir={language === "AR" ? "rtl" : "ltr"}
-              />
-              <TextField
-                label={currentContent.email}
-                variant="outlined"
-                fullWidth
-                sx={{ mb: 4 }}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                dir={language === "AR" ? "rtl" : "ltr"}
-                type="email"
               />
               <Button
                 type="submit"

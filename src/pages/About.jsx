@@ -34,7 +34,6 @@ function LandingPage({language}) {
   const [openDialog, setOpenDialog] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(true);
@@ -43,13 +42,12 @@ function LandingPage({language}) {
   const content = {
     AR: {
       title: "مراكزنا الطبية المتخصصة للرعاية الطبية المتكاملة",
-      subtitle: "نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية مع نخبة من الاطباء الاستشاريين",
+      subtitle: "  نقدم خدمات طبية متخصصة بأحدث التقنيات العالمية مع نخبة من الاطباء الاستشاريين",
       bookNow: "احجز موعدك الآن",
       services: "خدماتنا المتميزة",
       contactForm: "قدم بياناتك للتواصل",
       name: "الاسم",
       phone: "رقم الجوال",
-      email: "البريد الإلكتروني",
       submit: "إرسال الطلب",
       posts: [
         {
@@ -82,7 +80,6 @@ function LandingPage({language}) {
       contactForm: "Contact Information",
       name: "Name",
       phone: "Phone Number",
-      email: "Email Address",
       submit: "Send Request",
       posts: [
         {
@@ -115,11 +112,10 @@ function LandingPage({language}) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (name && phone && email) {
+    if (name && phone) {
       const data = {
         Name: name,
         Phone: phone,
-        Email: email,
         Date: new Date().toLocaleString('en-US')
       }
 
@@ -133,12 +129,10 @@ function LandingPage({language}) {
         }
       );
       const templateParams = {
-        email: email,
         from_name: name,
         message: `
           Name: ${name}
           Phone: ${phone}
-          Email: ${email}
           Request Date: ${new Date().toLocaleString('en-US')}
         `
       };
@@ -156,7 +150,6 @@ function LandingPage({language}) {
         setOpenDialog(false);
         setName("");
         setPhone("");
-        setEmail("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -418,16 +411,6 @@ function LandingPage({language}) {
                 onChange={(e) => setPhone(e.target.value)}
                 dir={language === "AR" ? "rtl" : "ltr"}
               />
-              <TextField
-  label={currentContent.email}
-  variant="outlined"
-  fullWidth
-  sx={{ mb: 3 }}
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  dir={language === "AR" ? "rtl" : "ltr"}
-  type="email"
-/>
               <Button
                 type="submit"
                 variant="contained"

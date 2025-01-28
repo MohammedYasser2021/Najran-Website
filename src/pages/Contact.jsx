@@ -10,11 +10,11 @@ import axios from "axios";
 function Contact({ language }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(true);
+    const [openDialog, setOpenDialog] = useState(false);
 
   const content = {
     AR: {
@@ -23,7 +23,6 @@ function Contact({ language }) {
       description: "مستشفى تخصصي نجران هو مركز طبي رائد يقدم خدمات صحية متكاملة بأحدث التقنيات العالمية وفريق طبي متميز. نسعى دائماً لتقديم أفضل رعاية طبية لمرضانا في بيئة مريحة وآمنة.",
       name: "الاسم",
       phone: "رقم الجوال",
-      email: "البريد الإلكتروني",
       message: "رسالتك",
       submit: "إرسال",
       contactInfo: "معلومات التواصل",
@@ -36,7 +35,6 @@ function Contact({ language }) {
       description: "Najran Specialist Hospital is a leading medical center providing comprehensive healthcare services with the latest global technologies and distinguished medical team. We always strive to provide the best medical care for our patients in a comfortable and safe environment.",
       name: "Name",
       phone: "Phone Number",
-      email: "Email",
       message: "Message",
       submit: "Send",
       contactInfo: "Contact Information",
@@ -47,11 +45,10 @@ function Contact({ language }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && phone && email && message) {
+    if (name && phone && message) {
       const data = {
         Name: name,
         Phone: phone,
-        Email: email,
         Date: new Date().toLocaleString('en-US')
       }
 
@@ -65,12 +62,10 @@ function Contact({ language }) {
         }
       );
       const templateParams = {
-        email: email,
         from_name: name,
         message: `
           Name: ${name}
           Phone: ${phone}
-          Email: ${email}
           Message: ${message}
           Request Date: ${new Date().toLocaleString('en-US')}
         `
@@ -89,7 +84,6 @@ function Contact({ language }) {
         setOpenDialog(false);
         setName("");
         setPhone("");
-        setEmail("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -178,14 +172,6 @@ function Contact({ language }) {
                 label={content[language].phone}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                sx={{ mb: 3 }}
-              />
-              <TextField
-                fullWidth
-                label={content[language].email}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
                 sx={{ mb: 3 }}
               />
               <TextField
