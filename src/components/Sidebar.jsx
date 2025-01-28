@@ -165,7 +165,7 @@ function DashboardLayoutBasic({ language, setLanguage, ...props }) {
         {/* You can add a logo here if needed */}
       </Box>
       <Divider />
-      <List sx={{ paddingTop: "45px", width: "300px" }}>
+      <List sx={{ paddingTop: "45px", width: "320px" }}>
         {NAVIGATION.map((item, index) => (
           <React.Fragment key={index}>
             <ListItem
